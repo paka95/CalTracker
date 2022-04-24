@@ -309,8 +309,8 @@ body {
     }
     /* === */
 
-.modal-content{background-color: rgba(54, 51, 51, 0.9);}
-.modal-dialog-slideout {min-height: 50%; margin-right: 0; margin-top: 200px; background: rgba(58, 55, 55, 0.386);}
+.modal-content{background-color: rgba(0, 0, 0, 0.8);}
+.modal-dialog-slideout {min-height: 50%; margin-right: 10px; margin-top: 200px; background: rgba(58, 55, 55, 0.386);}
 .modal.fade .modal-dialog.modal-dialog-slideout {-webkit-transform: translate(100%,0)scale(1);transform: translate(100%,0)scale(1);}
 .modal.fade.show .modal-dialog.modal-dialog-slideout {-webkit-transform: translate(0,0);transform: translate(0,0);display: flex;align-items: stretch;-webkit-box-align: stretch;height: 50%;}
 .modal.fade.show .modal-dialog.modal-dialog-slideout .modal-body{overflow-y: auto;overflow-x: hidden;}
