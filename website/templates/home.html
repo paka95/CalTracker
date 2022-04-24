@@ -1,0 +1,350 @@
+{% extends "layout.html" %} 
+{% block title %}Calories Tracker{% endblock %}
+
+
+{% block button %}
+<div class="dropdown">
+    <button class="navbutton dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/profile">Profile</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-container">
+  <div class="upper-main-container">
+    <div class="upper-item">Meal</div>
+    <div class="upper-item">data</div>
+    <div class="upper-item">Add meal</div>
+  </div>
+
+  <div class="lower-main-container">
+    <div class="table-container">
+      <div class="header-table">
+        <table style="width:100%;">
+          <thead style="height: 40px;">
+            <tr style="text-align: center; ">
+              <th style="width:40%">Meals</th>
+              <th style="width:12%">B [g]</th>
+              <th style="width:12%">W [g]</th>
+              <th style="width:12%">T [g]</th>
+              <th style="width:12%">kcal</th>
+              <th style="width:12%">weight [g]</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="content-table">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:40%">test 1</td>
+            <td style="width:12%">22</td>
+            <td style="width:12%">70</td>
+            <td style="width:12%">5</td>
+            <td style="width:12%">354</td>
+            <td style="width:12%">80</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test2</td>
+            <td style="width:12%">43</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">34</td>
+            <td style="width:12%">510</td>
+            <td style="width:12%">416</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+        </table>
+      </div>
+      <div class="footer-table">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:40%">
+              <div style="float:right">Sum:</div></td>
+            <td style="width:12%">$180</td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+          </tr>
+          <tr>
+            <td style="width:40%">
+              <div style="float:right; color: orange">Average:</div></td>
+            <td style="width:12%">$180</td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+          </tr>
+        </table>
+      </div>
+      <!-- <table class="dupa">
+        <thead>
+          <tr>
+            <th>Meals</th>
+            <th>B [g]</th>
+            <th>W [g]</th>
+            <th>T [g]</th>
+            <th>kcal</th>
+            <th>weight [g]</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td>test 1</td>
+              <td>22</td>
+              <td>70</td>
+              <td>5</td>
+              <td>354</td>
+              <td>80</td>
+            </tr>
+            <tr>
+              <td>test2</td>
+              <td>43</td>
+              <td>143</td>
+              <td>34</td>
+              <td>510</td>
+              <td>416</td>
+            </tr>
+            <tr>
+              <td>test3</td>
+              <td>121</td>
+              <td>143</td>
+              <td>65</td>
+              <td>723</td>
+              <td>614</td>
+            </tr>
+            <tr>
+              <td>test4</td>
+              <td>23</td>
+              <td>123</td>
+              <td>5</td>
+              <td>467</td>
+              <td>240</td>
+            </tr>
+            <tr>
+              <td>test5</td>
+              <td>43</td>
+              <td>143</td>
+              <td>34</td>
+              <td>510</td>
+              <td>416</td>
+            </tr>
+            <tr>
+              <td>test6</td>
+              <td>121</td>
+              <td>143</td>
+              <td>65</td>
+              <td>723</td>
+              <td>614</td>
+            </tr>
+            <tr>
+              <td>test7</td>
+              <td>23</td>
+              <td>123</td>
+              <td>5</td>
+              <td>467</td>
+              <td>240</td>
+            </tr>
+            <tr>
+              <td>test8</td>
+              <td>43</td>
+              <td>143</td>
+              <td>34</td>
+              <td>510</td>
+              <td>416</td>
+            </tr>
+            <tr>
+              <td>test9</td>
+              <td>121</td>
+              <td>143</td>
+              <td>65</td>
+              <td>723</td>
+              <td>614</td>
+            </tr>
+            <tr>
+              <td>test10</td>
+              <td>23</td>
+              <td>123</td>
+              <td>5</td>
+              <td>467</td>
+              <td>240</td>
+            </tr>
+            <tr>
+              <td>test11</td>
+              <td>43</td>
+              <td>143</td>
+              <td>34</td>
+              <td>510</td>
+              <td>416</td>
+            </tr>
+            <tr>
+              <td>test12</td>
+              <td>121</td>
+              <td>143</td>
+              <td>65</td>
+              <td>723</td>
+              <td>614</td>
+            </tr>
+            <tr>
+              <td>test13</td>
+              <td>23</td>
+              <td>123</td>
+              <td>5</td>
+              <td>467</td>
+              <td>240</td>
+            </tr>
+            <tr>
+              <td>test14</td>
+              <td>43</td>
+              <td>143</td>
+              <td>34</td>
+              <td>510</td>
+              <td>416</td>
+            </tr>
+            <tr>
+              <td>test15</td>
+              <td>121</td>
+              <td>143</td>
+              <td>65</td>
+              <td>723</td>
+              <td>614</td>
+            </tr>
+            <tr>
+              <td>test16</td>
+              <td>23</td>
+              <td>123</td>
+              <td>5</td>
+              <td>467</td>
+              <td>240</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>
+              <div style="float:right">Sum:</div></td>
+            <td>$180</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <div style="float:right; color: orange">Month sum:</div></td>
+            <td>$180</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+
+      </table> -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

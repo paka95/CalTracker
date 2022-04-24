@@ -1,0 +1,116 @@
+{% extends "layout.html" %} 
+{% block title %}Calories Tracker{% endblock %}
+
+
+{% block button %}
+<div class="dropdown">
+    <button class="navbutton dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/profile">Profile</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-container">
+  <div class="upper-main-container">
+    <div class="upper-item">Meal</div>
+    <div class="upper-item">data</div>
+    <div class="upper-item">Add meal</div>
+  </div>
+
+  <div class="lower-main-container">
+    <div class="table-container">
+        <table class="fixed_header">
+            <thead>
+              <tr>
+                <th>Col 1</th>
+                <th>Col 2</th>
+                <th>Col 3</th>
+                <th>Col 4</th>
+                <th>Col 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>row 1-0</td>
+                <td>row 1-1</td>
+                <td>row 1-2</td>
+                <td>row 1-3</td>
+                <td>row 1-4</td>
+              </tr>
+              <tr>
+                <td>row 2-0</td>
+                <td>row 2-1</td>
+                <td>row 2-2</td>
+                <td>row 2-3</td>
+                <td>row 2-4</td>
+              </tr>
+              <tr>
+                <td>row 3-0</td>
+                <td>row 3-1</td>
+                <td>row 3-2</td>
+                <td>row 3-3</td>
+                <td>row 3-4</td>
+              </tr>
+              <tr>
+                <td>row 4-0</td>
+                <td>row 4-1</td>
+                <td>row 4-2</td>
+                <td>row 4-3</td>
+                <td>row 4-4</td>
+              </tr>
+              <tr>
+                <td>row 5-0</td>
+                <td>row 5-1</td>
+                <td>row 5-2</td>
+                <td>row 5-3</td>
+                <td>row 5-4</td>
+              </tr>
+              <tr>
+                <td>row 6-0</td>
+                <td>row 6-1</td>
+                <td>row 6-2</td>
+                <td>row 6-3</td>
+                <td>row 6-4</td>
+              </tr>
+              <tr>
+                <td>row 7-0</td>
+                <td>row 7-1</td>
+                <td>row 7-2</td>
+                <td>row 7-3</td>
+                <td>row 7-4</td>
+              </tr>
+            </tbody>
+
+            <tfoot style="display:block">
+                <tr>
+                  <td>
+                    <div style="float:right">Sum:</div></td>
+                  <td>$180</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+                </tr>
+                <tr>
+                  <td>
+                    <div style="float:right; color: orange">Month sum:</div></td>
+                  <td>$180</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+                </tr>
+              </tfoot>
+          </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

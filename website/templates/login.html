@@ -1,0 +1,15 @@
+{% extends "layout.html" %} 
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<form class="login-register-form" method="POST">
+    <input class="login-register-form-input" type="text" placeholder="Email address">
+    <input class="login-register-form-input" type="text" placeholder="Password">
+    <input class="login-button" type="submit" value="Login">
+    <div style="margin-top: 10px;">
+        <a href=register class="fine-print">DON'T HAVE AN ACCOUNT YET?</a>
+    </div>
+</form>
+
+{% endblock %}

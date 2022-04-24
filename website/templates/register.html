@@ -1,0 +1,16 @@
+{% extends "layout.html" %} 
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<form class="login-register-form" method="POST">
+    <input class="login-register-form-input" type="text" placeholder="Email address">
+    <input class="login-register-form-input" type="text" placeholder="Password">
+    <input class="login-register-form-input" type="text" placeholder="Confirm password">
+    <input class="login-button" type="submit" value="Register">
+    <div style="margin-top: 10px;">
+        <a href=login class="fine-print">ALREADY REGISTERED</a>
+    </div>
+</form>
+
+{% endblock %}
