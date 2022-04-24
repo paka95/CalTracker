@@ -21,96 +21,218 @@
   <div class="upper-main-container">
     <div class="upper-item">Meal</div>
     <div class="upper-item">data</div>
-    <div class="upper-item">Add meal</div>
+    <div class="upper-item">
+        <button type="button" class="add-meal-btn" data-toggle="modal" data-target="#exampleModal">
+            add meal
+          </button>
+        </div>
   </div>
 
   <div class="lower-main-container">
     <div class="table-container">
-        <table class="fixed_header">
-            <thead>
-              <tr>
-                <th>Col 1</th>
-                <th>Col 2</th>
-                <th>Col 3</th>
-                <th>Col 4</th>
-                <th>Col 5</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>row 1-0</td>
-                <td>row 1-1</td>
-                <td>row 1-2</td>
-                <td>row 1-3</td>
-                <td>row 1-4</td>
-              </tr>
-              <tr>
-                <td>row 2-0</td>
-                <td>row 2-1</td>
-                <td>row 2-2</td>
-                <td>row 2-3</td>
-                <td>row 2-4</td>
-              </tr>
-              <tr>
-                <td>row 3-0</td>
-                <td>row 3-1</td>
-                <td>row 3-2</td>
-                <td>row 3-3</td>
-                <td>row 3-4</td>
-              </tr>
-              <tr>
-                <td>row 4-0</td>
-                <td>row 4-1</td>
-                <td>row 4-2</td>
-                <td>row 4-3</td>
-                <td>row 4-4</td>
-              </tr>
-              <tr>
-                <td>row 5-0</td>
-                <td>row 5-1</td>
-                <td>row 5-2</td>
-                <td>row 5-3</td>
-                <td>row 5-4</td>
-              </tr>
-              <tr>
-                <td>row 6-0</td>
-                <td>row 6-1</td>
-                <td>row 6-2</td>
-                <td>row 6-3</td>
-                <td>row 6-4</td>
-              </tr>
-              <tr>
-                <td>row 7-0</td>
-                <td>row 7-1</td>
-                <td>row 7-2</td>
-                <td>row 7-3</td>
-                <td>row 7-4</td>
-              </tr>
-            </tbody>
-
-            <tfoot style="display:block">
-                <tr>
-                  <td>
-                    <div style="float:right">Sum:</div></td>
-                  <td>$180</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>
-                    <div style="float:right; color: orange">Month sum:</div></td>
-                  <td>$180</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-              </tfoot>
-          </table>
+      <div class="header-table">
+        <table style="width:100%;">
+          <thead style="height: 40px;">
+            <tr style="text-align: center; ">
+              <th style="width:40%">Meals</th>
+              <th style="width:12%">B [g]</th>
+              <th style="width:12%">W [g]</th>
+              <th style="width:12%">T [g]</th>
+              <th style="width:12%">kcal</th>
+              <th style="width:12%">weight [g]</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="content-table">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:40%">test 1</td>
+            <td style="width:12%">22</td>
+            <td style="width:12%">70</td>
+            <td style="width:12%">5</td>
+            <td style="width:12%">354</td>
+            <td style="width:12%">80</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test2</td>
+            <td style="width:12%">43</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">34</td>
+            <td style="width:12%">510</td>
+            <td style="width:12%">416</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+          <tr>
+            <td style="width:40%">test3</td>
+            <td style="width:12%">121</td>
+            <td style="width:12%">143</td>
+            <td style="width:12%">65</td>
+            <td style="width:12%">723</td>
+            <td style="width:12%">614</td>
+          </tr>
+        </table>
+      </div>
+      <div class="footer-table">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:40%">
+              <div style="float:right">Sum:</div></td>
+            <td style="width:12%">$180</td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+          </tr>
+          <tr>
+            <td style="width:40%">
+              <div style="float:right; color: orange">Average:</div></td>
+            <td style="width:12%">$180</td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+            <td style="width:12%"></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Add meal to list</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="color:orange">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="#">
+            <div style="display:block">
+            <select>
+                <option>dupa1</option>
+                <option>dupa2</option>
+                <option>dupa3</option>
+            </select>
+            <!-- <label for="dupa1" style="color:orangered">dupa1</label> -->
+            <input id="dupa1" type="text" placeholder="name" style="width: 100px">
+            <input id="dupa1" type="text" placeholder="weight" style="width: 100px">
+            </div>
+            
+            <div style="display:block">
+            <label for="dupa2" style="color:orangered">Nutrients per 100g</label>
+            <input id="dupa2" type="text" placeholder="B" style="width: 50px">
+            <input id="dupa3" type="text" placeholder="W" style="width: 50px">
+            <input id="dupa3" type="text" placeholder="T" style="width: 50px">
+            </div>
+            
+            <!-- <div style="display:block">
+            <label for="dupa3" style="color:orangered">dupa3</label>
+            <input id="dupa3" type="text" placeholder="dupa">
+            </div>
+            
+            <div style="display:block">
+            <label for="dupa4" style="color:orangered">dupa4</label>
+            <input id="dupa4" type="text" placeholder="dupa">
+            </div> -->
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="navbutton">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
