@@ -4,11 +4,20 @@
 {% block content %}
 
 <form class="login-register-form" method="POST">
-    <input class="login-register-form-input" type="text" placeholder="Email address">
-    <input class="login-register-form-input" type="text" placeholder="Password">
-    <input class="login-register-form-input" type="text" placeholder="Confirm password">
-    <input class="login-button" type="submit" value="Register">
-    <div style="margin-top: 10px;">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.email(class="login-register-form-input", placeholder="Email", autocomplete="off") }}
+    </div>
+    <div>
+        {{ form.password(class="login-register-form-input", placeholder="Password") }}
+    </div>
+    <div>
+        {{ form.confirm_password(class="login-register-form-input", placeholder="Confirm password") }}
+    </div>
+    <div>
+        {{ form.submit(class="login-button") }}
+    </div>
+    <div style="margin-top: 10px">
         <a href=login class="fine-print">ALREADY REGISTERED</a>
     </div>
 </form>

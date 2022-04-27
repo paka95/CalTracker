@@ -4,19 +4,19 @@ from os import path
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
-# db = SQLAlchemy()
-# DB_NAME = "database.db"
-# bcrypt = Bcrypt()
+db = SQLAlchemy()
+DB_NAME = "database.db"
+bcrypt = Bcrypt()
 
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "secret"
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://paka:paka@localhost/finances'
-    # db.init_app(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:paka@localhost/cals'
+    db.init_app(app)
 
 
-    # bcrypt.init_app(app)
+    bcrypt.init_app(app)
 
 
     from .views import views
@@ -25,22 +25,22 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
-    # from .models import User, Expense
+    from .models import User, Product, Meal
     
-    # # create_database(app)
+    create_database(app)
     
-    # login_manager = LoginManager()
-    # login_manager.login_view = "auth.login"
-    # login_manager.init_app(app)
+    login_manager = LoginManager()
+    login_manager.login_view = "auth.login"
+    login_manager.init_app(app)
 
-    # @login_manager.user_loader
-    # def load_user(id):
-    #     return User.query.get(int(id))
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
     return app
 
 
-# def create_database(app):
-#     if not path.exists("website/" + DB_NAME):
-#         db.create_all(app=app)
-#         print("Database created")
+def create_database(app):
+    if not path.exists("website/" + DB_NAME):
+        db.create_all(app=app)
+        print("Database created")

@@ -29,7 +29,7 @@ body {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 100px;
+    width: 120px;
     transition: 0.3s;
     }
 
@@ -101,6 +101,7 @@ body {
     margin-top: 30px;
     height: 40px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
 }
 
 .login-button:hover {
@@ -110,9 +111,13 @@ body {
 
 .main-container {
     background-color: rgb(0, 0, 0, 0.7);
+    position: absolute;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
     width: 1000px; 
-    height:600px; 
-    margin: auto;
+    height: 65%; 
+    left: 50%;
+    top: 5%;
     margin-top: 5%;  
     border-radius: 5px;
     border: solid 1px;
@@ -137,7 +142,8 @@ body {
     font-family: 'Rationale', sans-serif; 
     font-size: 12px; 
     text-decoration: none; 
-    color:orange
+    color:orange;
+    transition: 0.3s;
 }
 
 .fine-print:hover {
@@ -171,10 +177,11 @@ body {
     width: 100%;
     height: 90%;
     background-color: rgb(200, 0, 200, 0.5);
-    padding: 50px;
+    padding: 2%;
 }
 
 .table-container {
+    /* position: absolute; */
     width: 800px;
     height: 400px;
     background-color: rgba(20, 180, 68, 0.379);
@@ -182,6 +189,7 @@ body {
 }
 
 .header-table {
+    /* position: absolute; */
     width: 100%;
     height: 10%;
     background-color: rgba(0, 0, 255, 0.363);
@@ -205,8 +213,10 @@ body {
 
 
 .content-table {
+    /* position: absolute; */
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
+    max-height: 75%;
     background-color: rgba(189, 131, 14, 0.405);
     overflow: auto;
     text-align: center;
@@ -317,3 +327,13 @@ body {
 .modal-dialog-slideout .modal-content{border: 0;}
 .modal-dialog-slideout .modal-header, .modal-dialog-slideout .modal-footer {height: 69px; display: block;} 
 .modal-dialog-slideout .modal-header h5 {float:left;}
+
+/* .modal-dialog-slideout-left {min-height: 50%; margin-left: 10px; margin-top: 200px; background: rgba(58, 55, 55, 0.386);} */
+
+.modal-dialog-slideout-left {min-height: 50%; margin-left: 10px; margin-top: 200px; background: rgba(58, 55, 55, 0.386);}
+.modal.fade .modal-dialog.modal-dialog-slideout-left {-webkit-transform: translate(0, 20)scale(1);transform: translate(0, 20)scale(1);}
+.modal.fade.show .modal-dialog.modal-dialog-slideout-left {-webkit-transform: translate(0,0);transform: translate(0,0);display: flex;align-items: stretch;-webkit-box-align: stretch;height: 50%;}
+.modal.fade.show .modal-dialog.modal-dialog-slideout-left .modal-body{overflow-y: auto;overflow-x: hidden;}
+.modal-dialog-slideout-left .modal-content{border: 0;}
+.modal-dialog-slideout-left .modal-header, .modal-dialog-slideout-left .modal-footer {height: 69px; display: block;} 
+.modal-dialog-slideout-left .modal-header h5 {float:left;}
