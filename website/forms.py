@@ -18,10 +18,10 @@ class ProductForm(FlaskForm):
     category = SelectField('Pick a category', validators=[DataRequired()], choices=[('Pick a category'), ('Dairy'), ('Breadstuff'), ('Meat'), ('Fruit'), ('Vegetable'), ('Drink'), ('Grain'), ('Pasta'), ('Honey'), ('Nuts'), ('Fats'), ('Misc'), ('Made')])
     name = StringField('Name', validators=[DataRequired(), Length(max=30)])
     maker = StringField('Maker', validators=[Length(max=30)])
-    proteins = FloatField('Proteins', validators=[DataRequired(), Length(max=10)])
-    carbo = FloatField('Carbohydrates', validators=[DataRequired(), Length(max=10)])
-    fats = FloatField('Fats', validators=[DataRequired(), Length(max=10)])
-    kcal = FloatField('Kcal', validators=[DataRequired(), Length(max=10)])
+    proteins = FloatField('Proteins', validators=[DataRequired()])
+    carbs = FloatField('Carbohydrates', validators=[DataRequired()])
+    fats = FloatField('Fats', validators=[DataRequired()])
+    kcal = FloatField('Kcal', validators=[DataRequired()])
 
 
 class MealForm(FlaskForm):

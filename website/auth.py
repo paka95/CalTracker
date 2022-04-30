@@ -19,7 +19,7 @@ def login():
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('views.home'))
         else:
-            flash('Wrong credentials. Please try again.', category='error')
+            flash('Wrong credentials. Please try again.', category='danger')
             return redirect(url_for('auth.login'))
     return render_template("login.html", form = form)
 

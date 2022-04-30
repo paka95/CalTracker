@@ -157,7 +157,7 @@ body {
     position: relative;
     width: 100%;
     height: 10%;
-    background-color: rgb(200, 0, 0, 0.5);
+    /* background-color: rgb(200, 0, 0, 0.5); */
     display: flex;
     justify-content: space-around;
 }
@@ -173,10 +173,33 @@ body {
     letter-spacing: 2px;
 }
 
+.upper-item-rolldown {
+    border: none;
+    color: white; 
+    width: 33%; 
+    text-align: center; 
+    padding-top: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Roboto;
+    letter-spacing: 2px;
+    background-color: rgb(0, 0, 0, 0.0);
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 120px;
+    transition: 0.3s;
+}
+
+.upper-item-rolldown:hover {
+    transition: 0.3s;
+    color: orange;
+}
+
 .lower-main-container {
     width: 100%;
     height: 90%;
-    background-color: rgb(200, 0, 200, 0.5);
+    /* background-color: rgb(200, 0, 200, 0.5); */
     padding: 2%;
 }
 
@@ -184,7 +207,7 @@ body {
     /* position: absolute; */
     width: 800px;
     height: 400px;
-    background-color: rgba(20, 180, 68, 0.379);
+    /* background-color: rgba(20, 180, 68, 0.379); */
     margin: auto;
 }
 
@@ -192,17 +215,18 @@ body {
     /* position: absolute; */
     width: 100%;
     height: 10%;
-    background-color: rgba(0, 0, 255, 0.363);
+    /* background-color: rgba(0, 0, 255, 0.363); */
     color: orange;
     text-align: center;
     /* border: 2px solid #a09e9e; */
     font-weight: bold;
     border-collapse: collapse;
     /* overflow-x: hidden; */
+    /* border-bottom: solid 3px; */
 }
 
 .header-table th {
-    border-bottom: 2px solid #a09e9e;
+    border-bottom: 4px solid #a09e9e;
 }
 
 .header-table th + th {
@@ -217,7 +241,7 @@ body {
     width: 100%;
     /* height: 300px; */
     max-height: 75%;
-    background-color: rgba(189, 131, 14, 0.405);
+    /* background-color: rgba(189, 131, 14, 0.405); */
     overflow: auto;
     text-align: center;
 }
@@ -229,6 +253,7 @@ body {
 
 .content-table td {
     border-bottom: 2px solid #a09e9e;
+    color: white;
 }
 
 .content-table tr:last-child {
@@ -246,10 +271,11 @@ body {
 .footer-table {
     width: 100%;
     height: 15%;
-    background-color: rgba(183, 192, 16, 0.503);
+    color: white;
+    /* background-color: rgba(183, 192, 16, 0.503); */
     border-style: hidden;
     text-align: center;
-    
+    border-top: 2px solid #a09e9e;
 }
 
 .footer-table td {
