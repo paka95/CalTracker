@@ -314,7 +314,22 @@ body {
     outline: 0;
 }
 
+.delete-button {
+    background-color: rgb(0, 0, 0, 0.0);
+    color: white;
+    border: solid 1px;
+    border-color: red;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 120px;
+    transition: 0.3s;
+    }
 
+.delete-button:hover, .delete-button:active{
+    background-color: red;
+}
 
 
 
@@ -363,3 +378,10 @@ body {
 .modal-dialog-slideout-left .modal-content{border: 0;}
 .modal-dialog-slideout-left .modal-header, .modal-dialog-slideout-left .modal-footer {height: 69px; display: block;} 
 .modal-dialog-slideout-left .modal-header h5 {float:left;}
+
+
+
+
+.modal-backdrop {
+    z-index: -1;
+  }

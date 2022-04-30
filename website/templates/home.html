@@ -70,141 +70,85 @@
               <td style="width:10%">{{meal.kcal}}</td>
               <td style="width:15%">{{meal.weight}}</td>
               <td style="width:5%">
-              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMealModal"><i class="fa fa-edit" style="color:orange"></i></button>
+              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMeal{{meal.id}}"><i class="fa fa-edit" style="color:orange"></i></button>
             </td>
           </tr>
+
+        <!-- Edit meal modal -->
+        <div class="modal fade" id="editMeal{{meal.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Edit meal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color:orange">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="#">
+                  <div style="display:block">
+                    <label for="category" style="color:orangered">Wybierz kategorie</label>
+                    <div style="display:block">
+                      <select name="category" style="width:200px">
+                        <option hidden disabled selected>{{meal.product.category}}</option>
+                        {% for product_category in product_category %}
+                          <option value="{{product_category}}">{{product_category}}</option>
+                        {% endfor %}
+                          <!-- <option>{{meal.id}}</option> -->
+                          <!-- <option>Pieczywo</option>
+                          <option>Nabiał</option>
+                          <option>Mięso</option> -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="display:block">
+                    <label for="product" style="color:orangered">Wybierz produkt</label>
+                    <div style="display:block">
+                      <select name="product25" id="prodfield25">
+                        <!-- <option>kajzerka</option>
+                        <option>mleko</option>
+                        <option>schab</option> -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="display:block">
+                    <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
+                    <div style="display:block">
+                      <input type="number" step="0.01" min="0" value="{{meal.weight}}">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="navbutton">Add</button>
+                    <button type="submit" class="delete-button" formaction="/delete-meal/{{meal.id}}">Remove</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
           {% endfor %}
-          <!-- <tr>
-            <td style="width:40%">test2</td>
-            <td style="width:10%">43</td>
-            <td style="width:10%">143</td>
-            <td style="width:10%">34</td>
-            <td style="width:10%">510</td>
-            <td style="width:15%">416</td>
-            <td style="width:5%">
-              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMealModal"><i class="fa fa-edit" style="color:orange"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:10%">121</td>
-            <td style="width:10%">143</td>
-            <td style="width:10%">65</td>
-            <td style="width:10%">723</td>
-            <td style="width:15%">614</td>
-            <td style="width:5%">
-              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMealModal"><i class="fa fa-edit" style="color:orange"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:10%">121</td>
-            <td style="width:10%">143</td>
-            <td style="width:10%">65</td>
-            <td style="width:10%">723</td>
-            <td style="width:15%">614</td>
-            <td style="width:5%">
-              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMealModal"><i class="fa fa-edit" style="color:orange"></i></button>
-            </td>
-          </tr> -->
-          <!-- <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr>
-          <tr>
-            <td style="width:40%">test3</td>
-            <td style="width:12%">121</td>
-            <td style="width:12%">143</td>
-            <td style="width:12%">65</td>
-            <td style="width:12%">723</td>
-            <td style="width:12%">614</td>
-          </tr> -->
         </table>
       </div>
       <div class="footer-table">
         <table style="width:100%;">
           <tr>
             <td style="width:40%">
-              <div style="float:right; color: orange; margin-right: 10px">Sum:</div></td>
-            <td style="width:10%">999</td>
-            <td style="width:10%"></td>
-            <td style="width:10%"></td>
-            <td style="width:10%"></td>
-            <td style="width:15%"></td>
+              <div style="float:right; color: orange; margin-right: 10px; font-weight: bold;">Sum:</div></td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(proteins_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(carbs_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(fats_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(kcal_total)}}</td>
+            <td style="width:15%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(weight_total)}}</td>
             <td style="width:5%"></td>
           </tr>
           <tr>
             <td style="width:40%">
-              <div style="float:right; color: orange; margin-right: 10px">Average:</div></td>
-            <td style="width:10%">999</td>
+              <div style="float:right; color: orange; margin-right: 10px; font-weight: bold;">Average:</div></td>
+            <td style="width:10%"></td>
             <td style="width:10%"></td>
             <td style="width:10%"></td>
             <td style="width:10%"></td>
@@ -216,6 +160,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -366,92 +314,28 @@
 </div>
 
 
-<!-- Edit meal modal -->
-<div class="modal fade" id="editMealModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Edit meal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color:orange">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="#">
-          <div style="display:block">
 
-            <label for="category" style="color:orangered">Wybierz kategorie</label>
-            <div style="display:block">
-              <select name="category">
-                  <option>Pieczywo</option>
-                  <option>Nabiał</option>
-                  <option>Mięso</option>
-              </select>
-            </div>
-        </div>
-
-        <div style="display:block">
-
-          <label for="product" style="color:orangered">Wybierz produkt</label>
-          <div style="display:block">
-            <select name="product">
-                <option>kajzerka</option>
-                <option>mleko</option>
-                <option>schab</option>
-            </select>
-          </div>
-      </div>
-
-        <div style="display:block">
-
-          <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
-          <div style="display:block">
-            <input type="number" step="0.01" min="0">
-          </div>
-        </div>
-          
-
-          
-          <!-- <div style="display:block">
-          <label for="dupa3" style="color:orangered">dupa3</label>
-          <input id="dupa3" type="text" placeholder="dupa">
-          </div>
-          
-          <div style="display:block">
-          <label for="dupa4" style="color:orangered">dupa4</label>
-          <input id="dupa4" type="text" placeholder="dupa">
-          </div> -->
-          
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="navbutton">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <script>
   function testing() {
         var i = document.getElementById("catfield").value;
-        // console.log(i);
         fetch('/category/' + i).then(function(response) {
           response.json().then(function(data){
-            var k = document.getElementById("prodfield");
             optionHTML = ''
             for (let i = 0; i < data.length; i++){
               optionHTML += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>'
-              console.log(data[i]['id']);
             }
-            // console.log(optionHTML);
             document.getElementById('prodfield').innerHTML = optionHTML;
+            document.getElementById('prodfield25').innerHTML = optionHTML;
           });
         });
 
   }
 
 </script>
+
+
 
 {% endblock %}
 

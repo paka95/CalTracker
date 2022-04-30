@@ -11,20 +11,29 @@ views = Blueprint("views", __name__)
 @login_required
 def home():
     meals = Meal.query.filter(func.date(Meal.date_added) == '2022-04-30').filter(Meal.user_id == current_user.id).all()
-    # products = Product.query.all()
+
+    proteins_total = 0
+    carbs_total = 0
+    fats_total = 0
+    kcal_total = 0
+    weight_total = 0
+
+    for m in meals:
+        proteins_total = proteins_total + m.proteins
+        carbs_total = carbs_total + m.carbohydrates
+        fats_total = fats_total + m.fats
+        kcal_total = kcal_total + m.kcal
+        weight_total = weight_total + m.weight
+
     products = db.session.query(Product.category).all()
-    # print(products)
+
     product_category = set()
     for categories in products:
         product_category.add(categories[0])
-        # print(categories[0])
-    # print(product_category)
-    # product1 = products[1]
-    # print(product1.category)
+
     product_form = ProductForm()
-    # product_form.category.choices = [(product.category) for product in Product.query.all()]
-    # print(set(product_form.category.choices))
-    return render_template("home.html", product_form = product_form, product_category = product_category, meals = meals)
+
+    return render_template("home.html", product_form = product_form, product_category = product_category, meals = meals, proteins_total = proteins_total, carbs_total = carbs_total, fats_total = fats_total, kcal_total = kcal_total, weight_total = weight_total)
 
 
 @views.route("/add-product", methods=['POST'])
@@ -77,6 +86,16 @@ def addMeal():
     # print("weight", weight)
     flash("Meal added!", category='success')
     return redirect(url_for("views.home"))
+
+
+@views.route("/delete-meal/<id>", methods=['POST'])
+@login_required
+def delete_meal(id):
+    meal = Meal.query.filter_by(id=id).first()
+    db.session.delete(meal)
+    db.session.commit()
+    flash('Meal deleted', category='info')
+    return redirect(url_for('views.home'))
 
 
 @views.route("/test")
