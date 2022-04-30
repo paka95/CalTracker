@@ -22,7 +22,6 @@ class Product(db.Model):
     fats = db.Column(db.Float, nullable = False)
     carbohydrates = db.Column(db.Float, nullable = False)
     kcal = db.Column(db.Float, nullable = False)
-    # of_meal = db.Column(db.Integer, db.ForeignKey('meal.id', ondelete="CASCADE"), nullable = False)
     of_meal = db.relationship('Meal', backref='product', lazy=True)
 
 
@@ -32,5 +31,8 @@ class Meal(db.Model):
     weight = db.Column(db.Float, nullable = False)
     date_added = db.Column(db.DateTime(timezone=True), default = func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
-    # product = db.relationship('Product', backref='meal', lazy=True)
+    proteins = db.Column(db.Float, nullable = False)
+    fats = db.Column(db.Float, nullable = False)
+    carbohydrates = db.Column(db.Float, nullable = False)
+    kcal = db.Column(db.Float, nullable = False)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete="CASCADE"), nullable=False)
