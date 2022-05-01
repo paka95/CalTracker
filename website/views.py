@@ -10,7 +10,7 @@ views = Blueprint("views", __name__)
 @views.route("/", methods=['GET', 'POST'])
 @login_required
 def home():
-    meals = Meal.query.filter(func.date(Meal.date_added) == '2022-04-30').filter(Meal.user_id == current_user.id).all()
+    meals = Meal.query.filter(func.date(Meal.date_added) == '2022-05-01').filter(Meal.user_id == current_user.id).all()
 
     proteins_total = 0
     carbs_total = 0

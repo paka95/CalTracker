@@ -61,76 +61,114 @@
       </div>
       <div class="content-table">
         <table style="width:100%;">
-          {% for meal in meals %}
-          <tr>
-              <td style="width:40%">{{meal.product.name}}</td>
-              <td style="width:10%">{{meal.proteins}}</td>
-              <td style="width:10%">{{meal.carbohydrates}}</td>
-              <td style="width:10%">{{meal.fats}}</td>
-              <td style="width:10%">{{meal.kcal}}</td>
-              <td style="width:15%">{{meal.weight}}</td>
-              <td style="width:5%">
-              <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMeal{{meal.id}}"><i class="fa fa-edit" style="color:orange"></i></button>
-            </td>
-          </tr>
 
-        <!-- Edit meal modal -->
-        <div class="modal fade" id="editMeal{{meal.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Edit meal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" style="color:orange">&times;</span>
-                </button>
+          {% if meals %}
+
+            {% for meal in meals %}
+            <tr>
+                <td style="width:40%">{{meal.product.name}}</td>
+                <td style="width:10%">{{meal.proteins}}</td>
+                <td style="width:10%">{{meal.carbohydrates}}</td>
+                <td style="width:10%">{{meal.fats}}</td>
+                <td style="width:10%">{{meal.kcal}}</td>
+                <td style="width:15%">{{meal.weight}}</td>
+                <td style="width:5%">
+                <button type="button" style="width:100%; height: 25px; background-color: rgb(0,0,0,0.0); border:none" data-toggle="modal" data-target="#editMeal{{meal.id}}"><i class="fa fa-edit" style="color:orange"></i></button>
+              </td>
+            </tr>
+
+          <!-- Edit meal modal -->
+          <div class="modal fade" id="editMeal{{meal.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Edit meal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:orange">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="POST" action="#">
+                    <div style="display:block">
+                      <label for="category" style="color:orangered">Wybierz kategorie</label>
+                      <div style="display:block">
+                        <select name="category" style="width:200px">
+                          <option hidden disabled selected>{{meal.product.category}}</option>
+                          {% for product_category in product_category %}
+                            <option value="{{product_category}}">{{product_category}}</option>
+                          {% endfor %}
+                            <!-- <option>{{meal.id}}</option> -->
+                            <!-- <option>Pieczywo</option>
+                            <option>Nabiał</option>
+                            <option>Mięso</option> -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <div style="display:block">
+                      <label for="product" style="color:orangered">Wybierz produkt</label>
+                      <div style="display:block">
+                        <select name="product25" id="prodfield25" style="width: 200px">
+                          <!-- <option>kajzerka</option>
+                          <option>mleko</option>
+                          <option>schab</option> -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <div style="display:block">
+                      <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
+                      <div style="display:block">
+                        <input type="number" step="0.01" min="0" value="{{meal.weight}}">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="navbutton">Add</button>
+                      <button class="delete-button" data-dismiss="modal" data-toggle="modal" data-target="#delete{{meal.id}}">Remove</button>
+                    </div>
+                  </form>
+                </div>
+
               </div>
-              <div class="modal-body">
-                <form method="POST" action="#">
-                  <div style="display:block">
-                    <label for="category" style="color:orangered">Wybierz kategorie</label>
-                    <div style="display:block">
-                      <select name="category" style="width:200px">
-                        <option hidden disabled selected>{{meal.product.category}}</option>
-                        {% for product_category in product_category %}
-                          <option value="{{product_category}}">{{product_category}}</option>
-                        {% endfor %}
-                          <!-- <option>{{meal.id}}</option> -->
-                          <!-- <option>Pieczywo</option>
-                          <option>Nabiał</option>
-                          <option>Mięso</option> -->
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style="display:block">
-                    <label for="product" style="color:orangered">Wybierz produkt</label>
-                    <div style="display:block">
-                      <select name="product25" id="prodfield25">
-                        <!-- <option>kajzerka</option>
-                        <option>mleko</option>
-                        <option>schab</option> -->
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style="display:block">
-                    <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
-                    <div style="display:block">
-                      <input type="number" step="0.01" min="0" value="{{meal.weight}}">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="navbutton">Add</button>
-                    <button type="submit" class="delete-button" formaction="/delete-meal/{{meal.id}}">Remove</button>
-                  </div>
-                </form>
-              </div>
-
             </div>
           </div>
-        </div>
 
-          {% endfor %}
+
+          <!-- Confirm delete modal -->
+          <div class="modal fade" id="delete{{meal.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Are you sure you want to delete {{meal.product.name}}?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:orange">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="POST" action="/delete-meal/{{meal.id}}">
+                    <!-- <div class="modal-footer"> -->
+                      <button class="navbutton" data-dismiss="modal">No</button>
+                      <button type="submit" class="delete-button" formaction="/delete-meal/{{meal.id}}">Yes</button>
+                    <!-- </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td style="width:40%; color:grey">No meals to be displayed</td>
+              <td style="width:10%; color:grey">0</td>
+              <td style="width:10%; color:grey">0</td>
+              <td style="width:10%; color:grey">0</td>
+              <td style="width:10%; color:grey">0</td>
+              <td style="width:15%; color:grey">0</td>
+              <td style="width:5%"></td>
+            </tr>
+          {% endif %}
         </table>
       </div>
       <div class="footer-table">
