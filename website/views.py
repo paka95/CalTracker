@@ -4,13 +4,25 @@ from website import db
 from website.forms import MealForm, ProductForm
 from website.models import Product, Meal
 from sqlalchemy.sql import func
+from datetime import datetime
 
 views = Blueprint("views", __name__)
 
-@views.route("/", methods=['GET', 'POST'])
+@views.route("/")
 @login_required
-def home():
-    meals = Meal.query.filter(func.date(Meal.date_added) == '2022-05-01').filter(Meal.user_id == current_user.id).all()
+def index():
+    todays_date = datetime.now()
+    todays_date_formatted = todays_date.strftime("%Y-%m-%d")
+    return redirect(url_for('views.home', meal_date = todays_date_formatted))
+
+
+
+@views.route("/<meal_date>", methods=['GET', 'POST'])
+@login_required
+def home(meal_date):
+    todays_date = datetime.now()
+    todays_date_formatted = todays_date.strftime("%Y-%m-%d")
+    meals = Meal.query.filter(func.date(Meal.date_added) == meal_date).filter(Meal.user_id == current_user.id).all()
 
     proteins_total = 0
     carbs_total = 0
@@ -24,6 +36,7 @@ def home():
         fats_total = fats_total + m.fats
         kcal_total = kcal_total + m.kcal
         weight_total = weight_total + m.weight
+        print(f"{m.product.name}", m.meal_type)
 
     products = db.session.query(Product.category).all()
 
@@ -33,7 +46,10 @@ def home():
 
     product_form = ProductForm()
 
-    return render_template("home.html", product_form = product_form, product_category = product_category, meals = meals, proteins_total = proteins_total, carbs_total = carbs_total, fats_total = fats_total, kcal_total = kcal_total, weight_total = weight_total)
+    if request.method == 'POST':
+        date_specified = request.form.get('date_picker_date')
+        return redirect(url_for('views.home', meal_date = date_specified))
+    return render_template("home.html", product_form = product_form, product_category = product_category, meals = meals, proteins_total = proteins_total, carbs_total = carbs_total, fats_total = fats_total, kcal_total = kcal_total, weight_total = weight_total, meal_date = meal_date)
 
 
 @views.route("/add-product", methods=['POST'])
@@ -41,6 +57,7 @@ def home():
 def addProduct():
     product_form = ProductForm()
     if request.method == 'POST':
+        date_specified = request.form.get('date_picker_date')
         category = request.form.get('cat')
         name = request.form.get('name')
         maker = request.form['maker']
@@ -58,17 +75,15 @@ def addProduct():
         db.session.add(new_product)
         db.session.commit()
         flash("Product added!", category="success")
-        return redirect(url_for('views.home'))
+        return redirect(url_for('views.home', meal_date = date_specified))
     flash("Product could not be added. Please try again.", category='danger')
-    return redirect(url_for('views.home'))
+    return redirect(url_for('views.home', meal_date = date_specified))
 
 
 @views.route("/add-meal", methods=['POST'])
 @login_required
 def addMeal():
-    # product = Product.query.filter_by(id=id).first()
-    
-    # form = MealForm()
+    date_specified = request.form.get('date_picker_date')
     meal_type = request.form.get('meal_type')
     kat = request.form.get('category')
     prod = request.form.get('product') #id produktu
@@ -76,26 +91,59 @@ def addMeal():
 
     product = Product.query.filter_by(id=prod).first()
 
-    new_meal = Meal(meal_type = meal_type, product_id = prod, weight = weight, user_id = current_user.id, kcal = (float(weight)/100)*product.kcal, proteins = (float(weight)/100)*product.proteins, carbohydrates = (float(weight)/100)*product.carbohydrates, fats = (float(weight)/100)*product.fats)
+    new_meal = Meal(meal_type = meal_type, product_id = prod, weight = weight, date_added = date_specified, user_id = current_user.id, kcal = (float(weight)/100)*product.kcal, proteins = (float(weight)/100)*product.proteins, carbohydrates = (float(weight)/100)*product.carbohydrates, fats = (float(weight)/100)*product.fats)
 
     db.session.add(new_meal)
     db.session.commit()
-    # print("posiłek", meal_type)
-    # print("kategoria", kat)
-    # print("id", prod)
-    # print("weight", weight)
+
     flash("Meal added!", category='success')
-    return redirect(url_for("views.home"))
+    return redirect(url_for("views.home", meal_date = date_specified))
+
+
+@views.route("/change-meal/<id>", methods=['GET', 'POST'])
+@login_required
+def change(id):
+    meal = Meal.query.filter_by(id = id).first()
+    specified_date = request.form.get('date_picker_date')
+
+    if not meal:
+        flash("No meal found", category="danger")
+    else:
+        # category = request.form.get('category26')
+        product = request.form.get('product26')
+        weight = request.form.get('weight_updated')
+        updated_meal_type = request.form.get('updated_meal_type')
+        if product == None:
+            meal.product_id = meal.product_id
+        else:
+            meal.product_id = product
+        
+        if weight == None:
+            meal.weight = meal.weight
+        else:
+            meal.weight = weight
+        # if updated_meal_type == None:
+        #     meal.meal_type = meal.meal_type
+        # else:
+        #     meal.meal_type = updated_meal_type
+        # print("Category:", category)
+        db.session.commit()
+        print("Product:", product)
+        print("Weight:", weight)
+        flash('Meal updated', category='success')
+        return redirect(url_for('views.home', meal_date = specified_date))
+    return redirect(url_for('views.home', meal_date = specified_date))
 
 
 @views.route("/delete-meal/<id>", methods=['POST'])
 @login_required
 def delete_meal(id):
+    date_specified = request.form.get('date_picker_date')
     meal = Meal.query.filter_by(id=id).first()
     db.session.delete(meal)
     db.session.commit()
     flash('Meal deleted', category='info')
-    return redirect(url_for('views.home'))
+    return redirect(url_for('views.home', meal_date = date_specified))
 
 
 @views.route("/test")
