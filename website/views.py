@@ -4,7 +4,8 @@ from website import db
 from website.forms import MealForm, ProductForm
 from website.models import Product, Meal
 from sqlalchemy.sql import func
-from datetime import datetime
+from datetime import datetime, date
+import json
 
 views = Blueprint("views", __name__)
 
@@ -20,9 +21,10 @@ def index():
 @views.route("/<meal_date>", methods=['GET', 'POST'])
 @login_required
 def home(meal_date):
-    todays_date = datetime.now()
-    todays_date_formatted = todays_date.strftime("%Y-%m-%d")
+    # meal_date = datetime.date(meal_date)
     meals = Meal.query.filter(func.date(Meal.date_added) == meal_date).filter(Meal.user_id == current_user.id).all()
+
+    meals_array = []
 
     proteins_total = 0
     carbs_total = 0
@@ -31,13 +33,27 @@ def home(meal_date):
     weight_total = 0
 
     for m in meals:
+        meal = {}
         proteins_total = proteins_total + m.proteins
         carbs_total = carbs_total + m.carbohydrates
         fats_total = fats_total + m.fats
         kcal_total = kcal_total + m.kcal
         weight_total = weight_total + m.weight
-        print(f"{m.product.name}", m.meal_type)
+        # print(f"{m.product.name}", m.meal_type)
+        meal['name'] = m.product.name
+        meal['type'] = m.meal_type
+        meal['proteins'] = m.proteins
+        meal['carbohydrates'] = m.carbohydrates
+        meal['fats'] = m.fats
+        meal['kcal'] = m.kcal
+        meal['weight'] = m.weight
+        meals_array.append(meal)
 
+    json_object = json.dumps(meals_array, indent = 4)
+    # print(*meals_array, sep="\n")
+    print(json_object)
+
+    products_rolldown = Product.query.all()
     products = db.session.query(Product.category).all()
 
     product_category = set()
@@ -49,7 +65,7 @@ def home(meal_date):
     if request.method == 'POST':
         date_specified = request.form.get('date_picker_date')
         return redirect(url_for('views.home', meal_date = date_specified))
-    return render_template("home.html", product_form = product_form, product_category = product_category, meals = meals, proteins_total = proteins_total, carbs_total = carbs_total, fats_total = fats_total, kcal_total = kcal_total, weight_total = weight_total, meal_date = meal_date)
+    return render_template("home.html", product_form = product_form, products_rolldown = products_rolldown, product_category = product_category, meals = meals, proteins_total = proteins_total, carbs_total = carbs_total, fats_total = fats_total, kcal_total = kcal_total, weight_total = weight_total, meal_date = meal_date)
 
 
 @views.route("/add-product", methods=['POST'])
@@ -83,7 +99,11 @@ def addProduct():
 @views.route("/add-meal", methods=['POST'])
 @login_required
 def addMeal():
+    todays_date = datetime.now()
+    todays_date_formatted = todays_date.strftime("%Y-%m-%d")
+
     date_specified = request.form.get('date_picker_date')
+    # print("DATTTTAA:", date_specified)
     meal_type = request.form.get('meal_type')
     kat = request.form.get('category')
     prod = request.form.get('product') #id produktu
@@ -91,7 +111,10 @@ def addMeal():
 
     product = Product.query.filter_by(id=prod).first()
 
-    new_meal = Meal(meal_type = meal_type, product_id = prod, weight = weight, date_added = date_specified, user_id = current_user.id, kcal = (float(weight)/100)*product.kcal, proteins = (float(weight)/100)*product.proteins, carbohydrates = (float(weight)/100)*product.carbohydrates, fats = (float(weight)/100)*product.fats)
+    if todays_date_formatted == date_specified:
+        new_meal = Meal(meal_type = meal_type, product_id = prod, weight = weight, user_id = current_user.id, kcal = (float(weight)/100)*product.kcal, proteins = (float(weight)/100)*product.proteins, carbohydrates = (float(weight)/100)*product.carbohydrates, fats = (float(weight)/100)*product.fats)
+    else:
+        new_meal = Meal(meal_type = meal_type, product_id = prod, weight = weight, date_added = date_specified, user_id = current_user.id, kcal = (float(weight)/100)*product.kcal, proteins = (float(weight)/100)*product.proteins, carbohydrates = (float(weight)/100)*product.carbohydrates, fats = (float(weight)/100)*product.fats)
 
     db.session.add(new_meal)
     db.session.commit()
@@ -122,6 +145,10 @@ def change(id):
             meal.weight = meal.weight
         else:
             meal.weight = weight
+            meal.proteins = (float(weight)/100)*meal.product.proteins
+            meal.carbohydrates = (float(weight)/100)*meal.product.carbohydrates
+            meal.fats = (float(weight)/100)*meal.product.fats
+            meal.kcal = (float(weight)/100)*meal.product.kcal
         # if updated_meal_type == None:
         #     meal.meal_type = meal.meal_type
         # else:
@@ -146,30 +173,18 @@ def delete_meal(id):
     return redirect(url_for('views.home', meal_date = date_specified))
 
 
-@views.route("/test")
+
+
+@views.route("/test", methods=['GET', 'POST'])
 def test():
-    meals = Meal.query.filter(func.date(Meal.date_added) == '2022-04-30').filter(Meal.user_id == current_user.id).all()
-    # print("meal1:", meals[0].product_id)
-    # print("meal2:", meals[1].product_id)
-    # new_meal = Meal.query.filter_by(id=2).first()
-    for meal in meals:
-        print("name:", meal.product.name)
-        print("kcal:", meal.product.kcal)
-        print("proteins:", meal.product.proteins)
-        print("fats:", meal.product.fats)
-        print()
-        # weight = meal.weight
-        # new_product = Product.query.filter_by(id=meal.product_id).first()
-        # kcal = (weight/100) * new_product.kcal
-        # bialko = (weight/100) * new_product.proteins
-        # wegle = (weight/100) * new_product.carbohydrates
-        # tluszcze = (weight/100) * new_product.fats
-        # print(f"{new_product.name} kcal: ", "{:.2f}".format(kcal))
-        # print(f"{new_product.name} bialko: ", bialko)
-        # print(f"{new_product.name} wegle: ", wegle)
-        # print(f"{new_product.name} tluszcze: ", tluszcze)
-        # print(new_meal.product_id)
+    todays_date = datetime.now()
+    todays_date_formatted = todays_date.strftime("%Y-%m-%d")
+
+    print(todays_date_formatted)
+
     return render_template("test.html")
+
+
 
 
 @views.route("/category/<cat>")
@@ -191,8 +206,8 @@ def get_cat(cat):
         listofdict.append(product)
         prod_list.append(prod.name)
     # print(product)
-    print("list of dict:", listofdict)
-    print("prod list:", prod_list)
-    
+    # print("list of dict:", listofdict)
+    # print("prod list:", prod_list)
+    print(listofdict)
     return jsonify(listofdict)
     

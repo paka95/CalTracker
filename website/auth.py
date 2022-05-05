@@ -17,7 +17,7 @@ def login():
             login_user(user)
             flash(f"User {current_user.email} logged in!", category='success')
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('views.home'))
+            return redirect(next_page) if next_page else redirect(url_for('views.index'))
         else:
             flash('Wrong credentials. Please try again.', category='danger')
             return redirect(url_for('auth.login'))
