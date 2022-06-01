@@ -317,6 +317,10 @@ body {
     /* transition: 0.3s; */
 }
 
+.input-field:hover {
+    cursor: pointer;
+}
+
 .meal-type-button {
     background-color: rgb(0, 0, 0, 0.0);
     color: white;
