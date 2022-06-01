@@ -2,7 +2,7 @@ from flask import Blueprint, request, render_template, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from website import db
 from website.forms import MealForm, ProductForm
-from website.models import Product, Meal
+from website.models import Product, Meal, User
 from sqlalchemy.sql import func
 from datetime import datetime, date
 import json
@@ -149,10 +149,10 @@ def change(id):
             meal.carbohydrates = (float(weight)/100)*meal.product.carbohydrates
             meal.fats = (float(weight)/100)*meal.product.fats
             meal.kcal = (float(weight)/100)*meal.product.kcal
-        # if updated_meal_type == None:
-        #     meal.meal_type = meal.meal_type
-        # else:
-        #     meal.meal_type = updated_meal_type
+        if updated_meal_type == None:
+            meal.meal_type = meal.meal_type
+        else:
+            meal.meal_type = updated_meal_type
         # print("Category:", category)
         db.session.commit()
         print("Product:", product)
@@ -183,6 +183,12 @@ def test():
     print(todays_date_formatted)
 
     return render_template("test.html")
+
+
+@views.route("/profile")
+def profile():
+    user = User.query.filter_by(id=current_user.id).first()
+    return render_template("profile.html", user = user)
 
 
 

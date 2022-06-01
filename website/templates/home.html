@@ -40,16 +40,16 @@
             <a class="dropdown-item" href="#">Przekąska 3</a>
         </div>
       </div> -->
-      <select class="form-select" id="meal_change" onchange="meal_change()">
-        <option selected value="all_day">Cały dzień</option>
-        <option value="breakfast">Śniadanie</option>
-        <option value="second_breakfast">II Śniadanie</option>
-        <option value="dinner">Obiad</option>
-        <option value="teatime">Podwieczorek</option>
-        <option value="supper">Kolacja</option>
-        <option value="snack1">Przekąska 1</option>
-        <option value="snack2">Przekąska 2</option>
-        <option value="snack3">Przekąska 3</option>
+      <select class="meal-type-button" style="border:none" id="meal_change" onchange="meal_change()">
+        <option style="background-color: rgba(0, 0, 0); color:white" selected value="all_day">Whole day</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="breakfast">Breakfast</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="second_breakfast">II Breakfast</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="dinner">Dinner</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="teatime">Teatime</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="supper">Supper</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="snack1">Snack 1</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="snack2">Snack 2</option>
+        <option style="background-color: rgba(0, 0, 0); color:white" value="snack3">Snack 3</option>
       </select>
     </div>
     <div class="upper-item">
@@ -89,17 +89,17 @@
 
             {% for meal in meals %}
 
-            <tr class="dupsko2" value="{{meal.meal_type}}">
+            <tr class="meal-row" value="{{meal.meal_type}}">
                 <td style="width:40%">{{meal.product.name}}</td>
-                <td style="width:10%">{{meal.proteins}}</td>
-                <td style="width:10%">{{meal.carbohydrates}}</td>
-                <td style="width:10%">{{meal.fats}}</td>
-                <td style="width:10%">{{meal.kcal}}</td>
-                <td style="width:15%">{{meal.weight}}</td>
+                <td style="width:10%" class="protein_cell">{{meal.proteins}}</td>
+                <td style="width:10%" class="carbohydrates_cell">{{meal.carbohydrates}}</td>
+                <td style="width:10%" class="fats_cell">{{meal.fats}}</td>
+                <td style="width:10%" class="kcal_cell">{{meal.kcal}}</td>
+                <td style="width:15%" class="weight_cell">{{meal.weight}}</td>
                 <td style="width:5%">
                   <button type="button" style="width:100%; height: 25px; background-color: rgb(0, 0, 0, 0.0); border:none" data-toggle="modal" data-target="#editMeal{{meal.id}}"><i class="fa fa-edit" style="color:orange"></i></button>
                 </td>
-                <td id="dupsko" style="display:none" value="{{meal.meal_type}}">{{meal.meal_type}}</td>
+                <td style="display:none" value="{{meal.meal_type}}">{{meal.meal_type}}</td>
             </tr>
 
           <!-- Edit meal modal -->
@@ -117,7 +117,7 @@
                   <form method="POST" action="/change-meal/{{meal.id}}">
                     <div style="display:block">
                       <input type=date id=date_picker name="date_picker_date" value="{{meal_date}}" style="display:none">
-                      <label for="category" style="color:orangered">Wybierz kategorie</label>
+                      <!-- <label for="category" style="color:orangered">Pick a category</label>
                       <div style="display:block">
                         <select name="category26" id="catfield26" onchange="testing26()">
                           <option selected hidden disabled>{{meal.product.category}}</option>
@@ -125,16 +125,16 @@
                             <option value="{{product_category}}">{{product_category}}</option>
                           {% endfor %}
                         </select>
-                      </div>
+                      </div> -->
                     </div>
 
                     <div style="display:block">
-                      <label for="product" style="color:orangered">Wybierz produkt</label>
+                      <label for="product" style="color:orangered">Choose a product</label>
                       <div style="display:block">
-                        <select name="product26" id="prodfield26" style="width: 200px">
+                        <select name="product26" id="prodfield26" class="input-field" style="width: 200px">
                           <option selected hidden disabled>{{meal.product.name}}</option>
                           {% for product in products_rolldown %}
-                          <option value="{{product.id}}">{{product.name}}</option>
+                          <option style="background-color: black" value="{{product.id}}">{{product.name}}</option>
                           {% endfor %}
                         </select>
                       </div>
@@ -142,28 +142,29 @@
 
                     <div style="display:block">
 
-                      <label for="product" style="color:orangered">Wybierz rodzaj posiłku</label>
+                      <label for="product" style="color:orangered">Choose meal type</label>
                       <div style="display:block;">
-                        <select name="meal_type" id="prodfield" style="width:200px">
-                            <option value="breakfast">Śniadanie</option>
-                            <option value="second_breakfast">II Śniadanie</option>
-                            <option value="dinner">Obiad</option>
-                            <option value="teatime">Podwieczorek</option>
-                            <option value="supper">Kolacja</option>
-                            <option value="snack1">Przekąska 1</option>
-                            <option value="snack2">Przekąska 2</option>
-                            <option value="snack3">Przekąska 3</option>
+                        <select name="updated_meal_type" id="updated_meal_type" class="input-field" style="width:200px">
+                            <option style="background-color:black" value="breakfast">Śniadanie</option>
+                            <option style="background-color:black" value="second_breakfast">II Śniadanie</option>
+                            <option style="background-color:black" value="dinner">Obiad</option>
+                            <option style="background-color:black" value="teatime">Podwieczorek</option>
+                            <option style="background-color:black" value="supper">Kolacja</option>
+                            <option style="background-color:black" value="snack1">Przekąska 1</option>
+                            <option style="background-color:black" value="snack2">Przekąska 2</option>
+                            <option style="background-color:black" value="snack3">Przekąska 3</option>
                             <option hidden selected disabled>{{meal.meal_type}}</option>
                         </select>
                       </div>
                       </div>
 
                     <div style="display:block">
-                      <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
+                      <label for="weight" style="color:orangered">Enter weight/volume</label>
                       <div style="display:block">
-                        <input type="number" name="weight_updated" step="0.01" min="0" value="{{meal.weight}}">
+                        <input type="number" name="weight_updated" step="0.01" min="0" class="input-field" style="width:200px" value="{{meal.weight}}">
                       </div>
                     </div>
+                    <hr/>
                     <div class="modal-footer">
                       <button type="submit" class="navbutton">Save changes</button>
                       <button class="delete-button" data-dismiss="modal" data-toggle="modal" data-target="#delete{{meal.id}}">Remove</button>
@@ -217,11 +218,12 @@
           <tr>
             <td style="width:40%">
               <div style="float:right; color: orange; margin-right: 10px; font-weight: bold;">Sum:</div></td>
-            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(proteins_total)}}</td>
-            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(carbs_total)}}</td>
-            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(fats_total)}}</td>
-            <td style="width:10%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(kcal_total)}}</td>
-            <td style="width:15%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(weight_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;" id="proteins_total">{{"%.2f"|format(proteins_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;" id="carbohydrates_total">{{"%.2f"|format(carbs_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;" id="fats_total">{{"%.2f"|format(fats_total)}}</td>
+            <td style="width:10%; font-weight: bold; font-size: 1.1em;" id="kcal_total">{{"%.2f"|format(kcal_total)}}</td>
+            <td style="width:15%; font-weight: bold; font-size: 1.1em;" id="weight_total">{{"%.2f"|format(weight_total)}}</td>
+            <!-- <td style="width:15%; font-weight: bold; font-size: 1.1em;">{{"%.2f"|format(weight_total)}}</td> -->
             <td style="width:5%"></td>
           </tr>
           <tr>
@@ -243,8 +245,8 @@
 
 <!-- Add meal modal -->
 <div class="modal fade" id="addMealModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-slideout" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog modal-dialog-slideout" role="document" style="width: 400px">
+      <div class="modal-content" style="text-align:center">
         <div class="modal-header">
           <h5 class="modal-title" style="color:orange"c id="exampleModalLabel">Add meal to list</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -256,55 +258,60 @@
             <input type=date id=date_picker name="date_picker_date" value="{{meal_date}}" style="display:none">
             <div style="display:block">
 
-              <label for="category" style="color:orangered">Wybierz kategorie</label>
+              <!-- <label for="category" style="color:orangered">Pick a category</label>
               <div style="display:block">
                 <select name="category" id="catfield" onchange="testing()">
-                  <option selected hidden disabled>Kategoria</option>
+                  <option selected hidden disabled>Category</option>
                   {% for product_category in product_category %}
                     <option value="{{product_category}}">{{product_category}}</option>
                   {% endfor %}
                 </select>
-              </div>
+              </div> -->
           </div>
 
           <div style="display:block">
 
-            <label for="product" style="color:orangered">Wybierz produkt</label>
+            <label for="product" style="color:orangered">Choose a product</label>
             <div style="display:block;">
-              <select name="product" id="prodfield" style="width:200px">
+              <select name="product" id="prodfield" class="input-field" style="width: 200px">
                   {% for product in products_rolldown %}
-                  <option value="{{product.id}}">{{product.name}}</option>
+                    {% if product.maker %}
+                      <option value="{{product.id}}" style="background-color:black">{{product.name}} ({{product.maker}})</option>
+                    {% else %}
+                      <option value="{{product.id}}" style="background-color:black">{{product.name}}</option>
+                    {% endif %}
                   {% endfor %}
               </select>
             </div>
         </div>
 
-        <div style="display:block">
+        <div style="display:block; margin-top: 20px">
 
-          <label for="product" style="color:orangered">Wybierz rodzaj posiłku</label>
+          <label for="product" style="color:orangered">Choose meal type</label>
           <div style="display:block;">
-            <select name="meal_type" id="prodfield" style="width:200px">
-                <option value="breakfast">Śniadanie</option>
-                <option value="second_breakfast">II Śniadanie</option>
-                <option value="dinner">Obiad</option>
-                <option value="teatime">Podwieczorek</option>
-                <option value="supper">Kolacja</option>
-                <option value="snack1">Przekąska 1</option>
-                <option value="snack2">Przekąska 2</option>
-                <option value="snack3">Przekąska 3</option>
+            <select name="meal_type" id="prodfield" class="input-field" style="width: 200px">
+                <option style="background-color:black" value="breakfast">Breakfast</option>
+                <option style="background-color:black" value="second_breakfast">II Breakfast</option>
+                <option style="background-color:black" value="dinner">Dinner</option>
+                <option style="background-color:black" value="teatime">Teatime</option>
+                <option style="background-color:black" value="supper">Supper</option>
+                <option style="background-color:black" value="snack1">Snack 1</option>
+                <option style="background-color:black" value="snack2">Snack 2</option>
+                <option style="background-color:black" value="snack3">Snack 3</option>
             </select>
           </div>
           </div>
 
-          <div style="display:block">
+          <div style="display:block; margin-top: 20px">
 
-            <label for="weight" style="color:orangered">Podaj wagę/objętość</label>
+            <label for="weight" style="color:orangered">Enter weight/volume</label>
             <div style="display:block">
-              <input type="number" step="0.01" min="0" name="weight">
+              <input type="number" step="0.01" min="0" name="weight" class="input-field" style="width: 200px">
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="submit" class="navbutton">Add</button>
+
+          <div class="modal-footer" style="margin-top: 20px; ">
+            <button type="submit" class="navbutton" style="width: 200px;">Add</button>
           </div>
           </form>
         </div>
@@ -330,58 +337,58 @@
           {{ product_form.hidden_tag() }}
           <input type=date id=date_picker name="date_picker_date" value="{{meal_date}}" style="display:none">
             <div>
-              <label for="category" style="color:orangered; width: 150px">Kategoria</label>
-              <select name="cat" style="width:150px; height: 30px">
-                <option value="Breadstuff">Breadstuff</option>
-                <option value="Meat">Meat</option>
-                <option value="Dairy">Dairy</option>
-                <option value="Fruit">Fruit</option>
-                <option value="Vegetable">Vegetable</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Drink">Drink</option>
-                <option value="Grain">Grain</option>
-                <option value="Honey">Honey</option>
-                <option value="Nuts">Nuts</option>
-                <option value="Fats">Fats</option>
-                <option value="Misc">Misc</option>
-                <option value="Made">Made</option>
-                <option value="" disabled selected hidden>Pick a category</option>
+              <label for="category" style="color:orangered; width: 150px">Category</label>
+              <select name="cat" class="input-field">
+                <option style="background-color:black" value="Breadstuff">Breadstuff</option>
+                <option style="background-color:black" value="Meat">Meat</option>
+                <option style="background-color:black" value="Dairy">Dairy</option>
+                <option style="background-color:black" value="Fruit">Fruit</option>
+                <option style="background-color:black" value="Vegetable">Vegetable</option>
+                <option style="background-color:black" value="Pasta">Pasta</option>
+                <option style="background-color:black" value="Drink">Drink</option>
+                <option style="background-color:black" value="Grain">Grain</option>
+                <option style="background-color:black" value="Honey">Honey</option>
+                <option style="background-color:black" value="Nuts">Nuts</option>
+                <option style="background-color:black" value="Fats">Fats</option>
+                <option style="background-color:black" value="Misc">Misc</option>
+                <option style="background-color:black" value="Made">Made</option>
+                <option style="background-color:black" value="" disabled selected hidden>Pick a category</option>
               </select>
-              <!-- {{ product_form.category(id="category", style="width:150px") }} -->
             </div>
 
             <div>
-              <label for="name" style="color:orangered; width: 150px">Nazwa</label>
-              {{ product_form.name(placeholder="Name", id="name", style="width:150px") }}
+              <label for="name" style="color:orangered; width: 150px">Name</label>
+              {{ product_form.name(placeholder="Name", id="name", autocomplete="off", class="input-field") }}
             </div>
 
             <div>
-              <label for="maker" style="color:orangered; width: 150px">Producent</label>
-              {{ product_form.maker(placeholder="Maker", id="maker", style="width:150px") }}
+              <label for="maker" style="color:orangered; width: 150px">Maker</label>
+              {{ product_form.maker(placeholder="Maker", id="maker",  class="input-field") }}
             </div>
 
             <div>
-              <label for="proteins" style="color:orangered; width: 150px">Białko [g per 100g]</label>
-              {{ product_form.proteins(placeholder="Proteins", id="proteins", style="width:150px") }}
+              <label for="proteins" style="color:orangered; width: 150px">Proteins [g per 100g]</label>
+              {{ product_form.proteins(placeholder="Proteins", id="proteins",  class="input-field") }}
             </div>
 
             <div>
-              <label for="carbs" style="color:orangered; width: 150px">Węgle [g per 100g]</label>
-              {{ product_form.carbs(placeholder="Carbs", id="carbs", style="width:150px") }}
+              <label for="carbs" style="color:orangered; width: 150px">Carbs [g per 100g]</label>
+              {{ product_form.carbs(placeholder="Carbs", id="carbs",  class="input-field") }}
             </div>
 
             <div>
-              <label for="fats" style="color:orangered; width: 150px">Tłuszcze [g per 100g]</label>
-              {{ product_form.fats(placeholder="Fats", id="fats", style="width:150px") }}
+              <label for="fats" style="color:orangered; width: 150px">Fats [g per 100g]</label>
+              {{ product_form.fats(placeholder="Fats", id="fats",  class="input-field") }}
             </div>
 
             <div>
               <label for="kcal" style="color:orangered; width: 150px">Kcal [per 100g]</label>
-              {{ product_form.kcal(placeholder="Kcal", kcal="kcal", style="width:150px") }}
+              {{ product_form.kcal(placeholder="Kcal", kcal="kcal", class="input-field") }}
             </div>
+            <hr/>
 
-          <div>
-            <button type="submit" class="navbutton" style="margin-top: 20px; margin-left: 150px; width: 150px">Add</button>
+          <div class="modal-footer" style="text-align: center">
+            <button type="submit" class="navbutton" style="width:150px; margin-left: -10px">Add</button>
          </div>  
         </form>
       </div>
@@ -397,32 +404,54 @@
       document.getElementById("goto").click();
   }
 
+
   function meal_change() {
-    // var k = document.getElementById('dupsko').getAttribute('value');
     var meal_type = document.getElementById("meal_change").value;
-    // console.log(meal_type)
-    const mealz = document.querySelectorAll('.dupsko2')
+    const mealz = document.querySelectorAll('.meal-row')
+
+    let proteins = document.getElementsByClassName('protein_cell');
+    let carbohydrates = document.getElementsByClassName('carbohydrates_cell');
+    let fats = document.getElementsByClassName('fats_cell');
+    let kcal = document.getElementsByClassName('kcal_cell');
+    let weight = document.getElementsByClassName('weight_cell');
+
+    let proteins_sum = 0;
+    let carbohydrates_sum = 0;
+    let fats_sum = 0;
+    let kcal_sum = 0;
+    let weight_sum = 0;
 
     for (let i = 0; i < mealz.length; i++){
+      mealz[i].style.display = 'none';
       if (meal_type == 'all_day'){
         mealz[i].style.display = 'table-row';
+        proteins_sum = proteins_sum + parseFloat(proteins[i].innerHTML);
+        carbohydrates_sum = + carbohydrates_sum + parseFloat(carbohydrates[i].innerHTML);
+        fats_sum = + fats_sum + parseFloat(fats[i].innerHTML);
+        kcal_sum = + kcal_sum + parseFloat(kcal[i].innerHTML);
+        weight_sum = + weight_sum + parseFloat(weight[i].innerHTML);
       }else{
         if (mealz[i].getAttribute('value') == meal_type){
           mealz[i].style.display = 'table-row';
+          proteins_sum = proteins_sum + parseFloat(proteins[i].innerHTML);
+          carbohydrates_sum = + carbohydrates_sum + parseFloat(carbohydrates[i].innerHTML);
+          fats_sum = + fats_sum + parseFloat(fats[i].innerHTML);
+          kcal_sum = + kcal_sum + parseFloat(kcal[i].innerHTML);
+          weight_sum = + weight_sum + parseFloat(weight[i].innerHTML);
         }else{
           mealz[i].style.display = 'none';
         }
       }
       }
+      document.getElementById('proteins_total').innerHTML = proteins_sum.toFixed(2);
+      document.getElementById('carbohydrates_total').innerHTML = carbohydrates_sum.toFixed(2);
+      document.getElementById('fats_total').innerHTML = fats_sum.toFixed(2);
+      document.getElementById('kcal_total').innerHTML = kcal_sum.toFixed(2);
+      document.getElementById('weight_total').innerHTML = weight_sum.toFixed(2);
 
-
-
-
-
+      
 
   }
-
-  
 
   
 
@@ -445,24 +474,6 @@
 
   }
 </script>
-<!--
-<script>
-  function testing26() {
-        var i = document.getElementById("catfield26").value;
-        fetch('/category/' + i).then(function(response) {
-          response.json().then(function(data){
-            optionHTML = ''
-            for (let i = 0; i < data.length; i++){
-              optionHTML += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>'
-            }
-            document.getElementById('prodfield26').innerHTML = optionHTML;
-          });
-        });
-
-  }
-</script> -->
-
-
 
 {% endblock %}
 
