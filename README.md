@@ -9,7 +9,7 @@ If you would like to keep an eye on what you eat and how many specific nutrients
 - Frontend - HTML5/CSS, a little bit of JavaScript
 
 ## Setup
-In order to run this project, simply clone the repository, setup the database (in file /website/__init__.py) then in console run:
+In order to run this project, simply clone the repository, setup the database (in file /website/__ init __.py) then in console run:
 ```
 $ pip install -r requirements.txt
 $ python app.py
