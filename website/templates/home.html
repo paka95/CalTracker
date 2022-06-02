@@ -138,7 +138,7 @@
                                                     <div style="display:block">
                                                         <label for="weight" style="color:orangered">Enter weight/volume</label>
                                                         <div style="display:block">
-                                                            <input type="number" name="weight_updated" step="0.01" min="0" class="input-field" style="width:200px" value="{{meal.weight}}">
+                                                            <input type="number" name="weight_updated" step="0.01" min="0" class="input-fieldtxt" style="width:200px" value="{{meal.weight}}">
                                                         </div>
                                                     </div>
                                                     <hr/>
@@ -266,7 +266,7 @@
                         <div style="display:block; margin-top: 20px">
                             <label for="weight" style="color:orangered">Enter weight/volume</label>
                             <div style="display:block">
-                                <input type="number" step="0.01" min="0" name="weight" class="input-field" style="width: 200px">
+                                <input type="number" step="0.01" min="0" name="weight" class="input-fieldtxt" style="width: 200px">
                             </div>
                         </div>
                         <div class="modal-footer" style="margin-top: 20px; ">
@@ -315,27 +315,27 @@
                         </div>
                         <div>
                           <label for="name" style="color:orangered; width: 150px">Name</label>
-                          {{ product_form.name(placeholder="Name", id="name", autocomplete="off", class="input-field") }}
+                          {{ product_form.name(placeholder="Name", id="name", autocomplete="off", class="input-fieldtxt") }}
                         </div>
                         <div>
                           <label for="maker" style="color:orangered; width: 150px">Maker</label>
-                          {{ product_form.maker(placeholder="Maker", id="maker",  class="input-field") }}
+                          {{ product_form.maker(placeholder="Maker", id="maker",  class="input-fieldtxt") }}
                         </div>
                         <div>
                           <label for="proteins" style="color:orangered; width: 150px">Proteins [g per 100g]</label>
-                          {{ product_form.proteins(placeholder="Proteins", id="proteins",  class="input-field") }}
+                          {{ product_form.proteins(placeholder="Proteins", id="proteins",  class="input-fieldtxt") }}
                         </div>
                         <div>
                           <label for="carbs" style="color:orangered; width: 150px">Carbs [g per 100g]</label>
-                          {{ product_form.carbs(placeholder="Carbs", id="carbs",  class="input-field") }}
+                          {{ product_form.carbs(placeholder="Carbs", id="carbs",  class="input-fieldtxt") }}
                         </div>
                         <div>
                           <label for="fats" style="color:orangered; width: 150px">Fats [g per 100g]</label>
-                          {{ product_form.fats(placeholder="Fats", id="fats",  class="input-field") }}
+                          {{ product_form.fats(placeholder="Fats", id="fats",  class="input-fieldtxt") }}
                         </div>
                         <div>
                           <label for="kcal" style="color:orangered; width: 150px">Kcal [per 100g]</label>
-                          {{ product_form.kcal(placeholder="Kcal", kcal="kcal", class="input-field") }}
+                          {{ product_form.kcal(placeholder="Kcal", kcal="kcal", class="input-fieldtxt") }}
                         </div>
                         <hr/>
                         <div class="modal-footer" style="text-align: center">

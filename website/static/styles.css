@@ -287,6 +287,22 @@ body {
     cursor: pointer;
 }
 
+.input-fieldtxt {
+    background-color: rgb(0, 0, 0, 0.0);
+    color: rgb(255, 255, 255);
+    border: solid 1px;
+    border-color: orange;
+    border-radius: 10px;
+    width: 150px; 
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.input-fieldtxt:hover {
+    cursor: text;
+}
+
 .meal-type-button {
     background-color: rgb(0, 0, 0, 0.0);
     color: white;
