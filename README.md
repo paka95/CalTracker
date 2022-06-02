@@ -49,6 +49,13 @@ Updating, removing meal:
 
 https://user-images.githubusercontent.com/94203043/171615602-acf9b9ce-f807-4985-9a1e-ac7e04952d80.mp4
 
+## Exemplary code snippets - backwards querying database:
+![product table](https://user-images.githubusercontent.com/94203043/171624258-7c558dda-547d-4043-a2a9-959a26736171.png)
+![meal table](https://user-images.githubusercontent.com/94203043/171624284-5a41d2f6-91d6-42ab-85c4-212d664dd830.png)
+![snip meal](https://user-images.githubusercontent.com/94203043/171624295-a92c3c25-50e9-49af-9406-7020cb2bfe05.png)
+![snip 2](https://user-images.githubusercontent.com/94203043/171624302-d7dea241-2261-4c07-a930-65bd0d6ee5e7.png)
+
+
 
 ## Plan for development
 In the near future I plan on adding:
