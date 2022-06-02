@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_bcrypt import Bcrypt
@@ -15,9 +15,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:paka@localhost/cals'
     db.init_app(app)
 
-
     bcrypt.init_app(app)
-
 
     from .views import views
     from .auth import auth
@@ -25,7 +23,7 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
-    from .models import User, Product, Meal
+    from .models import User
     
     create_database(app)
     

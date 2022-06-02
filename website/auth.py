@@ -4,7 +4,9 @@ from website.forms import RegisterForm, LoginForm
 from website.models import User
 from website import bcrypt, db
 
+
 auth = Blueprint("auth", __name__)
+
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -30,7 +32,6 @@ def register():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(email=form.email.data, password=hashed_password)
-
         db.session.add(user)
         db.session.commit()
         flash('User registered!', category='success')

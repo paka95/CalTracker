@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FloatField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 
+
 class RegisterForm(FlaskForm):
     email = StringField('EMAIL', validators=[DataRequired()])
     password = PasswordField('PASSWORD', validators=[DataRequired(), Length(min=6, max=60)])
@@ -13,6 +14,7 @@ class LoginForm(FlaskForm):
     email = StringField('EMAIL', validators=[DataRequired()])
     password = PasswordField('PASSWORD', validators=[DataRequired(), Length(min=6)])
     submit = SubmitField('LOGIN')
+
 
 class ProductForm(FlaskForm):
     category = SelectField('Pick a category', validators=[DataRequired()], choices=[('Pick a category'), ('Dairy'), ('Breadstuff'), ('Meat'), ('Fruit'), ('Vegetable'), ('Drink'), ('Grain'), ('Pasta'), ('Honey'), ('Nuts'), ('Fats'), ('Misc'), ('Made')])
