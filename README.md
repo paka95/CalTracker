@@ -52,7 +52,7 @@ https://user-images.githubusercontent.com/94203043/171615602-acf9b9ce-f807-4985-
 
 ## Plan for development
 In the near future I plan on adding:
-*a feature to track average calories intake throughout a month, 
-*a monthly summary of consumed nutrients,
-*a shopping list of consumed products,
-*a feature to add repeating meals as a list
+* a feature to track average calories intake throughout a month, 
+* a monthly summary of consumed nutrients,
+* a shopping list of consumed products,
+* a feature to add repeating meals as a list
