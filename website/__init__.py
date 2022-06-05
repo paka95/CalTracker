@@ -11,7 +11,7 @@ bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = "secret"
+    app.config['SECRET_KEY'] = "secret" # in real projects it is unacceptable to display secret key and database credentials
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:paka@localhost/cals'
     db.init_app(app)
 
